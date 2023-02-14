@@ -6,10 +6,9 @@ import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App font-markazi">
       <Navbar />
       <Main />
-
       <Footer />
     </div>
   );

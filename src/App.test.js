@@ -1,15 +1,16 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import App from "./App";
-import BookingPage from "./components/BookingPage";
+import Main from "./components/Main";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import Hero from "./components/Hero";
 
-test("renders learn react link", () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("header", () => {
+  render(<Hero />, { wrapper: BrowserRouter });
 });
 
-test("Renders the BookingForm heading", () => {
-  render(<BookingPage />);
-  const headingElement = screen.getByText("Book Now");
-  expect(headingElement).toBeInTheDocument();
+test("button text", () => {
+  const component = render(<Hero />, { wrapper: BrowserRouter });
+  const childElement = component.getByRole("button");
+
+  expect(childElement).toBeInTheDocument();
 });

@@ -7,12 +7,15 @@ const Hero = () => {
       <div className="flex flex-col items-start max-w-[322px]">
         <h1 className="text-[56px] font-[500]">Little Lemon</h1>
         <h6 className="text-[32px] font-[400] text-white">Chicago</h6>
-        <p className=" max-h-[79px] text-left text-white">
-          We are a family owned Mediterrian restauran, focused on traditional
+        <p className=" max-h-[79px] text-left text-white font-karla">
+          We are a family owned Mediterrian restaurant, focused on traditional
           recipes served with a modern twist
         </p>
         <Link to="/Reservations">
-          <button className="grid place-content-center h-[60px] w-[200px] text-[18px] text-white bg-[#f4ce14] rounded-[10px] mt-10">
+          <button
+            role="button"
+            className="grid place-content-center h-[60px] w-[200px] text-[18px] text-white bg-[#f4ce14] rounded-[10px] mt-10"
+          >
             Reseve a Table
           </button>
         </Link>
