@@ -15,7 +15,9 @@ const Navbar = () => {
       {/* LargeMenu */}
       <div className="flex justify-between px-[200px] items-center">
         <div>
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
         </div>
         <ul className="flex gap-x-6">
           {Links.map((item, i) => (

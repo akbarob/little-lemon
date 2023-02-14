@@ -4,8 +4,6 @@ import { useForm } from "react-hook-form";
 
 // import { fetchAPI, submitAPI } from "../utils/calls";
 
-import { fetchAPI } from "../calls";
-
 const BookingPage = ({
   setavailableTimes,
   availableTimes,
@@ -43,17 +41,23 @@ const BookingPage = ({
     console.log("canceling");
   };
 
+  const style = {
+    input: "p-3 rounded-[10px] outline-none my-6 ml-4 font-karla",
+    labelText: "font-Markazi font-bold capitalze",
+    label: "flex w-full justify-start items-center text-xl",
+  };
+
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col justify-center items-center ">
       <div>
         <h1 className="text-2xl font-bold font-karla p-4">Reservation Form</h1>
       </div>
       <form
-        className="grid gap-[20px] place-content-center bg-slate-200"
+        className="flex flex-col justify-center items-center bg-slate-200 w-[500px] shadow-2xl rounded-lg p-6"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <label htmlFor="resOccasion">
-          Choose date
+        <label htmlFor="resOccasion" className={style.label}>
+          <h3 className={style.labelText}>Choose date</h3>
           <input
             // value={date}
             type="date"
@@ -62,6 +66,7 @@ const BookingPage = ({
               required: true,
               onChange: (e) => setdate(e.target.value),
             })}
+            className={style.input}
           />
           {errors.resDate?.type === "required" && (
             <span className="text-red-400 text-xl ml-4">
@@ -70,9 +75,13 @@ const BookingPage = ({
           )}
         </label>
 
-        <label htmlFor="resTime">
-          Choose time
-          <select id="res-time " {...register("resTime", { required: true })}>
+        <label htmlFor="resTime" className={style.label}>
+          <h3 className={style.labelText}>Choose Time</h3>{" "}
+          <select
+            id="res-time "
+            {...register("resTime", { required: true })}
+            className={style.input}
+          >
             <option>Time</option>
 
             {time?.map((item, i) => (
@@ -88,13 +97,14 @@ const BookingPage = ({
           )}
         </label>
 
-        <label className="flex" htmlFor="resGuest">
-          Number of guests{" "}
+        <label htmlFor="resGuest" className={style.label}>
+          <h3 className={style.labelText}>No of Guests</h3>{" "}
           <input
             type="number"
             placeholder="0"
             id="resGuests"
             {...register("resGuest", { required: true, min: 1, max: 15 })}
+            className={style.input}
           />
           {errors.resGuest?.type === "max" && (
             <span className="text-red-400 text-xl ml-4">
@@ -113,14 +123,15 @@ const BookingPage = ({
           )}
         </label>
 
-        <label htmlFor="resOccasion">
-          Occasion
+        <label htmlFor="resOccasion" className={style.label}>
+          <h3 className={style.labelText}> Choose Occasion</h3>{" "}
           <select
             id="occasion"
             {...register("resOccasion", { required: true })}
-            defaultValue=""
+            className={style.input}
           >
-            <option>select occasion</option>
+            <option defaultValue>select occasion</option>
+
             <option value="Birthday">Birthday</option>
             <option value="Annivesary">Anniversary</option>
           </select>
@@ -130,11 +141,11 @@ const BookingPage = ({
             </span>
           )}
         </label>
-        <div className="flex gap-10">
+        <div className="flex gap-10 my-4 ">
           <button
             type="submit"
             aria-label="On Click"
-            className="py-4 px-8 bg-green-400 rounded-lg text-xl text-white font-bold"
+            className="py-2 px-4 bg-green-400 rounded-lg text-xl text-white font-bold"
           >
             Make Your reservation
           </button>
@@ -142,7 +153,7 @@ const BookingPage = ({
             type="reset"
             onClick={() => handleCancel()}
             aria-label="On Click"
-            className="py-4 px-8 bg-rose-400 rounded-lg text-white text-xl font-bold"
+            className="py-2 px-4 bg-rose-400 rounded-lg text-white text-xl font-bold"
           >
             Cancel Reservation
           </button>

@@ -21,8 +21,6 @@ const Main = () => {
     initializeTimes
   );
 
-  console.log("ava:", availableTimes);
-
   function updateTimes(state, action) {
     const refresh = {
       resDate: "",
@@ -50,12 +48,13 @@ const Main = () => {
       console.log(fetchAPI(datey));
       setTime(fetchAPI(datey));
       console.log(date);
+      console.log("date selected:", date);
     } else {
       var datey = new Date();
       console.log("newdate:", datey);
       console.log(fetchAPI(datey));
       setTime(fetchAPI(datey));
-      console.log("i ran :", date);
+      console.log("no date :");
     }
 
     console.log("datey", datey);
@@ -87,7 +86,10 @@ const Main = () => {
             />
           }
         ></Route>
-        <Route path="/Confirmed-booking" element={<ConfirmedBooking />}></Route>
+        <Route
+          path="/Confirmed-booking"
+          element={<ConfirmedBooking data={data} />}
+        ></Route>
       </Routes>
     </div>
   );
